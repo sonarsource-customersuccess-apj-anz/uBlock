@@ -1,0 +1,14 @@
+name: "SonarQube Cloud Scan"
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened, synchronize, reopened]
+jobs:
+  sonar:
+    uses: sonarsource-customersuccess-apj-anz/sonar-workflows/.github/workflows/sonarqube-cloud-scan.yml@main
+    with:
+      project_key: sonarsource-customersuccess-apj-anz_uBlock
+    secrets:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
